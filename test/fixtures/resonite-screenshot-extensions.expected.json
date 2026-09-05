@@ -1,0 +1,108 @@
+{
+  "type": "ResoniteScreenshotExtensions",
+  "extra": {},
+  "locationName": "sagyo",
+  "locationAccessLevel": "ContactsPlus",
+  "locationHiddenFromListing": false,
+  "timeTaken": "2026-08-11T11:51:02.4597725Z",
+  "takenGlobalPosition": [0.0, 0.0, 0.0],
+  "takenGlobalRotation": [0.0, 0.0, 0.0, 1.0],
+  "takenGlobalScale": [1.0, 1.0, 1.0],
+  "appVersion": "2026.8.7.887",
+  "cameraManufacturer": "Resonite",
+  "cameraModel": "PhotoCaptureManager",
+  "cameraFOV": 60.0,
+  "is360": false,
+  "stereoLayout": "None",
+  "takenBy": {
+    "id": "U-4bc2a986-d137-4fe2-a359-eafa91e9a5f0",
+    "name": "けーわい",
+    "machineId": "fry96qk8grgs4soyiyr33cbeqyhbrhs4z7dhcozftq95c4i5fduo",
+    "extra": {}
+  },
+  "locationHost": {
+    "id": "U-1QM3GUrSD6e",
+    "name": "kyless",
+    "machineId": "8goruwjftk4oezh6eeauyka8pu8okz17uasgm7ajn3ehqg1wmhty",
+    "extra": {}
+  },
+  "userInfos": [
+    {
+      "id": "U-1QM3GUrSD6e",
+      "name": "kyless",
+      "machineId": "8goruwjftk4oezh6eeauyka8pu8okz17uasgm7ajn3ehqg1wmhty",
+      "isInVR": false,
+      "isPresent": false,
+      "headPosition": [0.0, 0.0, 0.0],
+      "headOrientation": [0.0, 0.0, 0.0, 1.0],
+      "sessionJoinTimestamp": "2026-08-11T09:34:30.9176206Z",
+      "extra": {}
+    },
+    {
+      "id": "U-4bc2a986-d137-4fe2-a359-eafa91e9a5f0",
+      "name": "けーわい",
+      "machineId": "fry96qk8grgs4soyiyr33cbeqyhbrhs4z7dhcozftq95c4i5fduo",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [-0.099254206, 1.4309509, 2.881267],
+      "headOrientation": [0.33423126, -0.31151053, 0.14922492, 0.8769165],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    },
+    {
+      "id": "U-1YDkBVDiAts",
+      "name": "natsuneko",
+      "machineId": "n6sifq1rft8c6ocxhiuk5s3nfe6ik8te7n5fwcw71ynxki9sarzo",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [-3.5252612, 2.9429984, 14.631699],
+      "headOrientation": [0.030642418, 0.97647965, -0.20189564, 0.069185846],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    },
+    {
+      "id": "U-lill",
+      "name": "lill",
+      "machineId": "my7cu3ywr7x63k3kzw1nzygz8uai41qujsre49ncfpth1twzti4y",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [2.2473154, 1.9819424, 3.0026748],
+      "headOrientation": [0.15488064, -0.39169088, 0.093089305, 0.90217775],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    },
+    {
+      "id": "U-yoshi1123-",
+      "name": "yoshi1123_",
+      "machineId": "ug69h93hzby7ugyn4b6wb4cdktyeyeyho6838913wuickcqyutko",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [-0.2823343, 1.698811, 3.302074],
+      "headOrientation": [0.1479533, -0.33080596, 0.061755933, 0.92998034],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    },
+    {
+      "id": "U-YOUR",
+      "name": "YOUR",
+      "machineId": "n433xkzj98kuyabdfn6xsqcmgiytyxqcepfwa7jghhepi5tiof4y",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [0.13393076, 0.70264816, 3.8167145],
+      "headOrientation": [-0.017577302, 0.934862, -0.079724245, -0.34549692],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    },
+    {
+      "id": "U-Yzou",
+      "name": "Yzou",
+      "machineId": "c1495xkf4nhakzpfpax99fn8oyjubn4jkiwce5yqtwiu11gjxnio",
+      "isInVR": false,
+      "isPresent": true,
+      "headPosition": [-0.6024429, 0.65428334, 3.5779674],
+      "headOrientation": [-0.11163717, 0.91051173, 0.27596915, 0.28696102],
+      "sessionJoinTimestamp": "0001-01-01T00:00:00",
+      "extra": {}
+    }
+  ]
+}

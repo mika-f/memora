@@ -1,0 +1,24 @@
+{
+  "type": "VRCX",
+  "application": "VRCX",
+  "version": 1,
+  "author": {
+    "id": "usr_f0ae733a-b3ea-4462-b9a7-8c386e860ac1",
+    "displayName": "natsuneko_vrc",
+    "extra": {}
+  },
+  "world": {
+    "name": "カンパニュラに咲く想い",
+    "id": "wrld_fa32e8f7-38df-4d49-a608-58fc4872ede9",
+    "instanceId": "wrld_fa32e8f7-38df-4d49-a608-58fc4872ede9:35996~friends(usr_f0ae733a-b3ea-4462-b9a7-8c386e860ac1)~region(jp)",
+    "extra": {}
+  },
+  "players": [
+    {
+      "id": "usr_f0ae733a-b3ea-4462-b9a7-8c386e860ac1",
+      "displayName": "natsuneko_vrc",
+      "extra": {}
+    }
+  ],
+  "extra": {}
+}
