@@ -259,16 +259,25 @@ export const parseAllImageMetadata = async (input: PhotoInput): Promise<ImageMet
     }
   }
 
-  return result;
+  const priority: Record<ImageMetadata["type"], number> = {
+    VRChat: 0,
+    VRCX: 1,
+    ResoniteScreenshotExtensions: 2,
+  };
+
+  // A screenshot can contain metadata written by more than one application.
+  // Keep duplicate records and their relative order, but expose the supported
+  // format precedence consistently to callers.
+  return result
+    .map((metadata, index) => ({ metadata, index }))
+    .sort((a, b) => priority[a.metadata.type] - priority[b.metadata.type] || a.index - b.index)
+    .map(({ metadata }) => metadata);
 };
 
-/** Resonite takes precedence, matching steambird; use parseAllImageMetadata for mixed images. */
+/** Prefer VRChat, then VRCX, then ResoniteScreenshotExtensions for mixed images. */
 export const parseImageMetadata = async (input: PhotoInput): Promise<ImageMetadata | null> => {
   const results = await parseAllImageMetadata(input);
-
-  return (
-    results.find((result) => result.type === "ResoniteScreenshotExtensions") ?? results[0] ?? null
-  );
+  return results[0] ?? null;
 };
 
 /** Alias for existing callers. */

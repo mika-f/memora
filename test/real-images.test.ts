@@ -53,3 +53,12 @@ describe.each([
     expect(Buffer.compare(raw, bytes)).toBe(0);
   });
 });
+
+test("mixed VRChat and VRCX screenshot prefers VRChat", async () => {
+  const bytes = new Uint8Array(
+    readFileSync(fixtureUrl("vrchat-vrcx.png")),
+  );
+  const all = await parseAllImageMetadata(bytes);
+  expect(all.map(({ type }) => type)).toStrictEqual(["VRChat", "VRCX"]);
+  expect((await parseImageMetadata(bytes))?.type).toBe("VRChat");
+});

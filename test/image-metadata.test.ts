@@ -123,7 +123,7 @@ test("legacy VRChat and private worlds are not given synthesized values", async 
   assert.equal(priv.worldId, "");
   assert.equal(priv.worldDisplayName, "");
 });
-test("mixed images expose all recognized formats; singular API retains Resonite precedence", async () => {
+test("mixed images expose all recognized formats in VRChat, VRCX, Resonite order", async () => {
   const bytes = png(
     itxt("Description", vrcx),
     itxt("XML:com.adobe.xmp", vrchat()),
@@ -131,11 +131,11 @@ test("mixed images expose all recognized formats; singular API retains Resonite 
   );
   assert.deepEqual(
     (await parseAllImageMetadata(bytes)).map((v) => v.type),
-    ["VRCX", "VRChat", "ResoniteScreenshotExtensions"],
+    ["VRChat", "VRCX", "ResoniteScreenshotExtensions"],
   );
   const preferred = await parseImageMetadata(bytes);
   assert.ok(preferred);
-  assert.equal(preferred.type, "ResoniteScreenshotExtensions");
+  assert.equal(preferred.type, "VRChat");
   assert.equal(await parseImageMetadata(png()), null);
   assert.deepEqual(await parseAllImageMetadata(new Uint8Array()), []);
 });

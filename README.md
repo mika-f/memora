@@ -47,7 +47,7 @@ if (metadata) {
 function parseImageMetadata(input: ArrayBuffer | Uint8Array): Promise<ImageMetadata | null>;
 ```
 
-画像から 1 件のメタデータを取得します。複数形式が同居する場合は ResoniteScreenshotExtensions を優先し、それ以外は解析結果の先頭を返します。
+画像から 1 件のメタデータを取得します。複数形式が同居する場合は VRChat、VRCX、ResoniteScreenshotExtensions の順で優先します。
 
 `parsePhotoMetadata` はこの関数の別名です。
 
