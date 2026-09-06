@@ -12,6 +12,10 @@ await build({
   platform: "browser",
   format: "esm",
   target: "es2020",
+  // exifr probes UA at import time for browser CSS/canvas rotation behavior.
+  // Native navigator may have no userAgent. Avoid that probe without mutating
+  // the app's navigator or requiring an import-order-dependent polyfill.
+  define: { "navigator.userAgent": '""' },
   alias: { exifr: "exifr/src/bundles/full.mjs" },
   plugins: [{
     name: "exifr-without-node-loader",

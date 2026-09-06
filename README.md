@@ -175,6 +175,8 @@ PNG の iTXt（非圧縮・zlib 圧縮）と XMP を読み取ります。Resonit
 
 React Native 向けには、依存先 `exifr` の Node.js 専用ローダーを除いたバンドルを生成します。v0.1.0 では、このローダーの動的 `import` が Metro の依存解析エラーを起こしていました。Metro によるパッケージ解決・バンドルと、ホスト API のない環境での PNG・JPEG 解析を回帰テストで検証しています。iOS / Android 実機でのテストではありません。
 
+`navigator` が存在しても `userAgent` がない React Native 環境に対応するため、専用バンドルでは exifr のブラウザー描画補正用 UA 参照を空文字に置き換えます。アプリ側で `navigator.userAgent` を補完する必要はなく、グローバル変数も変更しません。
+
 ## 開発
 
 リポジトリを取得した後、パッケージのディレクトリで実行します。

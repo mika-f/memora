@@ -35,23 +35,28 @@ for (const exportsEnabled of [true, false]) {
       dev: false,
       minify: false,
     });
-    const context = vm.createContext({});
-    vm.runInContext("globalThis.global = globalThis", context);
-    vm.runInContext(code, context);
-    for (const [input, type] of [
-      [png(itxt("Description", vrcx)), "VRCX"],
-      [png(itxt("Description", vrcx, "", "", true)), "VRCX"],
-      [png(itxt("XML:com.adobe.xmp", vrchat())), "VRChat"],
-      [png(itxt("XML:com.adobe.xmp", resonite(), "", "", true)), "ResoniteScreenshotExtensions"],
-      [jpeg(resonite()), "ResoniteScreenshotExtensions"],
-    ] as const) {
-      context.bytes = Array.from(input);
-      const metadata = await vm.runInContext(
-        "PhotoParser.parseImageMetadata(new Uint8Array(bytes))", context,
-      );
-      assert.equal(metadata?.type, type);
-      if (type === "VRCX") assert.equal(metadata.world.name, "日本語の世界 🌏");
-      if (type === "ResoniteScreenshotExtensions") assert.equal(metadata.locationName, "世界");
+    for (const globals of [{}, { navigator: Object.freeze({ product: "ReactNative" }) }]) {
+      const context = vm.createContext(globals);
+      vm.runInContext("globalThis.global = globalThis", context);
+      vm.runInContext(code, context);
+      for (const [input, type] of [
+        [png(itxt("Description", vrcx)), "VRCX"],
+        [png(itxt("Description", vrcx, "", "", true)), "VRCX"],
+        [png(itxt("XML:com.adobe.xmp", vrchat())), "VRChat"],
+        [png(itxt("XML:com.adobe.xmp", resonite(), "", "", true)), "ResoniteScreenshotExtensions"],
+        [jpeg(resonite()), "ResoniteScreenshotExtensions"],
+      ] as const) {
+        context.bytes = Array.from(input);
+        const metadata = await vm.runInContext(
+          "PhotoParser.parseImageMetadata(new Uint8Array(bytes))", context,
+        );
+        assert.equal(metadata?.type, type);
+        if (type === "VRCX") assert.equal(metadata.world.name, "日本語の世界 🌏");
+        if (type === "ResoniteScreenshotExtensions") assert.equal(metadata.locationName, "世界");
+      }
+      if ("navigator" in globals) {
+        assert.equal(Object.prototype.hasOwnProperty.call(globals.navigator, "userAgent"), false);
+      }
     }
   }, 30_000);
 }
