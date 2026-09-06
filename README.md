@@ -163,6 +163,8 @@ async function readScreenshot(uri: string, readBytes: (uri: string) => Promise<U
 
 `readBytes` には、アプリで採用しているファイルアクセスライブラリを使った読み取り関数を渡してください。URI、Base64、`File`、`Blob` をパーサーへ直接渡すことはできません。
 
+Metro は `react-native` 条件（従来の解決方式では同名のフィールド）から専用バンドルを読み込みます。Node.js モジュールのポリフィルや Metro の追加設定は不要です。
+
 ## 対応範囲と制約
 
 PNG の iTXt（非圧縮・zlib 圧縮）と XMP を読み取ります。ResoniteScreenshotExtensions の JPEG XMP にも対応します。
@@ -170,6 +172,10 @@ PNG の iTXt（非圧縮・zlib 圧縮）と XMP を読み取ります。Resonit
 画像のリサイズ・再圧縮・形式変換により、メタデータが削除される場合があります。変換前の元画像を使用してください。
 
 コアは React やネイティブモジュールに依存しません。Node.js の `Buffer` / `process`、DOM、`TextDecoder` がない環境でのバンドルテストを用意しています。
+
+React Native 向けには、依存先 `exifr` の Node.js 専用ローダーを除いたバンドルを生成します。v0.1.0 では、このローダーの動的 `import` が Metro の依存解析エラーを起こしていました。Metro によるパッケージ解決・バンドルと、ホスト API のない環境での PNG・JPEG 解析を回帰テストで検証しています。iOS / Android 実機でのテストではありません。
+
+`navigator` が存在しても `userAgent` がない React Native 環境に対応するため、専用バンドルでは exifr のブラウザー描画補正用 UA 参照を空文字に置き換えます。アプリ側で `navigator.userAgent` を補完する必要はなく、グローバル変数も変更しません。
 
 ## 開発
 
@@ -186,7 +192,7 @@ npm run build
 
 `npm run typecheck` は本体とテストの両方を検証します。テストのみの型チェックには `npm run typecheck:test` を使用できます。
 
-ビルドすると、ESM と型定義が `dist/` に生成されます。インストール時のスクリプトを無効にしている場合は、利用前に `npm run build` を実行してください。
+ビルドすると、ESM、React Native 向けバンドル、型定義が `dist/` に生成されます。インストール時のスクリプトを無効にしている場合は、利用前に `npm run build` を実行してください。
 
 ## ライセンス
 
