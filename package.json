@@ -8,7 +8,11 @@
     "README.md"
   ],
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/exifr-navigator-polyfill.*",
+    "**/exifr-full.*",
+    "**/exifr-png-parser.*"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {

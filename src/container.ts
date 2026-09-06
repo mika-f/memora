@@ -1,4 +1,5 @@
-import exifr from "exifr";
+import "./exifr-navigator-polyfill.js";
+import exifr from "./exifr-full.js";
 import { XMLParser } from "fast-xml-parser";
 import { strFromU8, unzlibSync } from "fflate";
 import extract from "png-chunks-extract";

@@ -169,7 +169,7 @@ PNG の iTXt（非圧縮・zlib 圧縮）と XMP を読み取ります。Resonit
 
 画像のリサイズ・再圧縮・形式変換により、メタデータが削除される場合があります。変換前の元画像を使用してください。
 
-コアは React やネイティブモジュールに依存しません。Node.js の `Buffer` / `process`、DOM、`TextDecoder` がない環境でのバンドルテストを用意しています。
+コアは React やネイティブモジュールに依存しません。Node.js の `Buffer` / `process`、DOM、`TextDecoder` がない環境でのバンドルテストを用意しています。EXIF の解析には `exifr` を使用していますが、その既定のバンドルは Hermes（React Native の JS エンジン)が解釈できない構文（値が変数の動的 `import()`）を含むため、memora は必要なパーサーだけを `exifr` の個別モジュールから組み上げて使用しています。この構成では PNG の zlib 圧縮 ICC プロファイルの展開のみ非対応です（VRChat / VRCX / ResoniteScreenshotExtensions のスクリーンショットでは使用されません）。
 
 ## 開発
 

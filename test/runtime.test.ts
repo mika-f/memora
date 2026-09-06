@@ -25,9 +25,16 @@ for (const mainFields of [
     vm.runInContext(
       mainFields[0] === "browser"
         ? "globalThis.self = globalThis"
-        : "globalThis.global = globalThis",
+        // React Native defines `global` and a `navigator` object that lacks
+        // `userAgent`, unlike a browser missing `navigator` entirely.
+        : "globalThis.global = globalThis; globalThis.navigator = { product: 'ReactNative' };",
       context,
     );
+    // Hermes (React Native's JS engine) fails to parse a dynamic `import(expr)`
+    // call whose argument isn't a string literal; exifr's own "full" bundle
+    // contains exactly that. Guard against reintroducing it.
+    if (mainFields[0] === "react-native")
+      assert.doesNotMatch(result.outputFiles[0].text, /\bimport\(\s*(?!["'])/);
     vm.runInContext(result.outputFiles[0].text, context);
     for (const [input, platform] of [
       [png(itxt("Description", vrcx)), "VRChat"],
